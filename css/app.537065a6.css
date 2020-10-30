@@ -1,0 +1,1 @@
+.todos{flex-flow:column;margin-top:80px;box-shadow:0 2px 4px 0 rgba(0,0,0,.2),0 25px 50px 0 rgba(0,0,0,.1)}.todos,h1{width:100%}h1{text-align:center}.addTodo{margin:0 auto;margin-top:20px;margin-bottom:20px;width:80%;height:50px}.list-item{border-top:.5px solid}.md-button{outline:none;border:1px solid #a7a7a7;padding:1px 6px;color:#7a7a7a}.completed{text-decoration:line-through}
