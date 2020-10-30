@@ -82,11 +82,14 @@ h1 {
     border-top: 0.5px solid;
 }
 
-md-button {
+.md-button {
           outline: none;
           border: 1px solid rgb(167, 167, 167);
           padding: 1px 6px;
           color: rgb(122, 122, 122);
         }
 
+.completed{
+  text-decoration:  line-through;
+}
 </style>
