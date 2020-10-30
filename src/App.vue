@@ -1,28 +1,93 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+   
+    <header>
+      <h1 class="title">To Dos</h1>
+    </header>
+
+    <md-field> 
+      <md-textarea v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo"></md-textarea>
+      <md-button class="md-icon-button md-raised" v-on:click.prevent="addTodo">
+        <md-icon>add</md-icon>
+      </md-button>
+    </md-field>
+
+    <md-list class="todos" v-if="showTodos()">
+      <md-list-item 
+        v-for="todo in todos" 
+        :class="{editing: todo == editedTodo}"
+        @dblclick="editedTodo(todo)"
+        :key="todo.id">
+        {{ todo.label }}
+            <div class="view">
+            <md-checkbox class="check" type="checkbox" v-model="todo.completed"></md-checkbox>
+          </div>
+      </md-list-item>
+    </md-list>
+    <md-button @click="removeTodo(todo)">Delete</md-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      todos: [],
+      currentTodo: ''
+    };
+  },
+  methods: {
+    addTodo() {
+      this.todos.push({id: this.todos.length, label: this.currentTodo, completed: false});
+      this.currentTodo = '';
+    },
+    removeTodo(todo) {
+      var index = this.todos.indexOf(todo);
+      this.todos.splice(index, 1);
+    },
+    clickToEdit (todo) {
+      this.editTodoId = todo.id; 
+    },
+     showTodos () {
+      return this.todos.length > 0 
+    },
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+.todos {
+  flex-flow: column;
+  width: 100%;
+  margin-top: 80px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.addTodo{
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  height: 50px;
+}
+
+.list-item{
+    border-top: 0.5px solid;
+}
+
+md-button {
+          outline: none;
+          border: 1px solid rgb(167, 167, 167);
+          padding: 1px 6px;
+          color: rgb(122, 122, 122);
+        }
+
 </style>
