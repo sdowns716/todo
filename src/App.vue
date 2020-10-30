@@ -6,20 +6,19 @@
     </header>
 
     <md-field> 
-      <md-textarea v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo"></md-textarea>
-      <md-button class="md-icon-button md-raised" v-on:click.prevent="addTodo">
-        <md-icon>add</md-icon>
+      <md-input v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo"></md-input>
+      <md-button class="md-button md-raised" v-on:click.prevent="addTodo">
       </md-button>
     </md-field>
 
     <md-list class="todos" v-if="showTodos()">
       <md-list-item 
         v-for="todo in todos" 
-        :class="{editing: todo == editedTodo}"
+        class="{editing: todo == editedTodo}"
         @dblclick="editedTodo(todo)"
         :key="todo.id">
         {{ todo.label }}
-            <div class="view">
+          <div class="view">
             <md-checkbox class="check" type="checkbox" v-model="todo.completed"></md-checkbox>
           </div>
       </md-list-item>
@@ -67,6 +66,7 @@ export default {
 h1 {
   width: 100%;
   text-align: center;
+  color: white;
 }
 
 
@@ -78,11 +78,11 @@ h1 {
   height: 50px;
 }
 
-.list-item{
-    border-top: 0.5px solid;
+md-list-item {
+    color: white;
 }
 
-.md-button {
+md-button {
           outline: none;
           border: 1px solid rgb(167, 167, 167);
           padding: 1px 6px;
@@ -92,4 +92,9 @@ h1 {
 .completed{
   text-decoration:  line-through;
 }
+
 </style>
+
+.view {
+  color: white;
+}
