@@ -5,7 +5,7 @@
       <h1 class="title">To Dos</h1>
     </header>
 
-    <md-field> 
+    <md-field class="addToDo"> 
       <md-input v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add a todo"></md-input>
       <md-button class="md-button md-raised" v-on:click.prevent="addTodo">
       </md-button>
@@ -94,7 +94,3 @@ md-button {
 }
 
 </style>
-
-.view {
-  color: white;
-}
