@@ -24,7 +24,7 @@
       </md-list-item>
     </md-list>
     <md-button @click="removeTodo(todo)">Delete</md-button>
-  </div>
+  </div> 
 </template>
 
 <script>
